@@ -1,0 +1,7 @@
+pytest>=8.0
+datasets 
+scikit-learn 
+transformers 
+gradio
+huggingface_hub
+ipykernel
