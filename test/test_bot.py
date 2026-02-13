@@ -5,6 +5,7 @@ from pathlib import Path
 
 from bot import BotConfig, SupportBot
 from support_bot.answer_retriever import get_answer
+from test.loader import load_from_disk
 
 
 def _write_knowledge(path: Path, overlay: dict[str, str]) -> None:
@@ -26,7 +27,7 @@ def test_keyword_response(tmp_path: Path) -> None:
     data_path = tmp_path / "knowledge_base.json"
     _write_knowledge(data_path, knowledge)
 
-    bot = SupportBot(BotConfig(knowledge_path=data_path))
+    bot = SupportBot(BotConfig(knowledge_path=data_path), loader=load_from_disk)
 
     response = bot.respond("How do I reset my password?")
     assert "reset" in response.lower()
@@ -42,7 +43,7 @@ def test_fallback_response(tmp_path: Path) -> None:
     data_path = tmp_path / "knowledge_base.json"
     _write_knowledge(data_path, knowledge)
 
-    bot = SupportBot(BotConfig(knowledge_path=data_path))
+    bot = SupportBot(BotConfig(knowledge_path=data_path), loader=load_from_disk)
     response = bot.respond("Tell me something unexpected.")
     assert response == knowledge["default"]
 
