@@ -11,25 +11,26 @@ from .config import BotConfig
 
 
 def load_faq_pairs(
-    dataset_name: str = "qgyd2021/e_commerce_customer_service",
     *,
-    split: str = "train",
-    question_field: str = "question",
-    answer_field: str = "answer",
-    config: BotConfig | None = None,
+    config: BotConfig,
 ) -> list[Tuple[str, str]]:
     """Return normalized (question, answer) pairs from a Hugging Face dataset."""
 
+    effective_dataset = config.dataset_name
+    effective_split = config.dataset_split
+    effective_question_field = config.question_field
+    effective_answer_field = config.answer_field
+
     try:
-        dataset = load_dataset(dataset_name, split=split)
+        dataset = load_dataset(effective_dataset, split=effective_split)
     except Exception as exc:  # pragma: no cover - dataset errors are external
-        raise RuntimeError(f"Unable to load dataset {dataset_name}:{split}") from exc
+        raise RuntimeError(f"Unable to load dataset {effective_dataset}:{effective_split}") from exc
 
     faqs: list[Tuple[str, str]] = []
 
     for item in dataset:
-        question = _coerce_to_str(item.get(question_field))
-        answer = _coerce_to_str(item.get(answer_field))
+        question = _coerce_to_str(item.get(effective_question_field))
+        answer = _coerce_to_str(item.get(effective_answer_field))
         if question and answer:
             faqs.append((question, answer))
 

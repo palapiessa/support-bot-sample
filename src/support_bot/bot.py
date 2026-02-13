@@ -8,8 +8,8 @@ from typing import Callable, Mapping
 from .config import BotConfig
 from .responses import choose_response
 
+# alias for a lightweight interface for a loader
 Loader = Callable[[BotConfig], Mapping[str, str]]
-
 
 class SupportBot:
     """Lightweight wrapper that wires the configuration to responders."""
