@@ -9,7 +9,6 @@ from typing import Iterable, Iterator, Mapping, Sequence, Tuple
 from datasets import load_dataset
 from .config import BotConfig
 
-
 def load_faq_pairs(
     *,
     config: BotConfig,
