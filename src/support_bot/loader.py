@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Mapping
 
 from .config import BotConfig
+from .data_loader import load_faq_pairs
 
 
 def load_from_disk(config: BotConfig) -> Mapping[str, str]:
@@ -14,7 +15,11 @@ def load_from_disk(config: BotConfig) -> Mapping[str, str]:
 
     path = config.knowledge_path
     if not path.exists():
-        raise FileNotFoundError(f"Knowledge base not found: {path}")
+        load_faq_pairs(config=config)
+        if not path.exists():
+            raise FileNotFoundError(
+                f"Knowledge base not found after refreshing dataset: {path}"
+            )
 
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
