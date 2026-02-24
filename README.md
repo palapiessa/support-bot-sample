@@ -16,6 +16,11 @@ Minimal Python support bot sample showing how to structure code, data, and tests
    uv venv
    source .venv/bin/activate
    ```
+   (Win):
+   ```PowerShell
+   .\venv\Scripts\Activate.ps1
+   ```
+
 2. Install dependencies:
    ```bash
    uv pip install -r requirements.txt
@@ -24,8 +29,10 @@ Minimal Python support bot sample showing how to structure code, data, and tests
    ```bash
    uv python -m pytest
    ```
-
-## What to change next
-- Expand `src/support_bot` with richer loaders, connectors, and prompt logic.
-- Add more knowledge blobs inside `data/` and source them via configuration, or fetch them from a live API.
-- Cover edge cases in `test/test_bot.py`, including empty inputs or malformed JSON.
+4. Run the CLI app
+   - use VSCode debug, launch.json in code repo
+   - or cmdline
+   ```bash
+   cd src
+   ../.venv/bin/python -m support_bot.cli
+   ```
