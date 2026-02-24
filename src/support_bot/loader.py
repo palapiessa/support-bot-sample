@@ -115,4 +115,8 @@ def _load_question_list(knowledge_path: Path) -> list[str]:
 
 @lru_cache(maxsize=1)
 def _embedding_model() -> SentenceTransformer:
-    return SentenceTransformer("all-MiniLM-L6-v2")
+    return SentenceTransformer(
+        "all-MiniLM-L6-v2",
+        torch_dtype="auto",
+        low_cpu_mem_usage=True,
+    )
