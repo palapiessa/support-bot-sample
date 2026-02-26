@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_KNOWLEDGE_PATH = PROJECT_ROOT / "data" / "ecommerce_faq_as_squad.json"
+DEFAULT_KNOWLEDGE_PATH = PROJECT_ROOT / "data" / "support_bot_knowledge.json"
 
 
 @dataclass(frozen=True)
@@ -12,7 +12,7 @@ class BotConfig:
     """Immutable configuration for building a support bot."""
 
     knowledge_path: Path = DEFAULT_KNOWLEDGE_PATH
-    dataset_name: str = "palapiessa/e_commerce_customer_service_squad"
+    dataset_name: str = "bitext/Bitext-customer-support-llm-chatbot-training-dataset"
     dataset_split: str = "train"
-    question_field: str = "question"
-    answer_field: str = "answers"
+    question_field: str = "instruction"
+    answer_field: str = "response"

@@ -4,16 +4,18 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Iterable, Iterator, Mapping, Sequence, Tuple
+from typing import Iterable, Mapping, Sequence, Tuple
 
 from datasets import load_dataset
+
 from .config import BotConfig
+
 
 def load_faq_pairs(
     *,
     config: BotConfig,
 ) -> list[Tuple[str, str]]:
-    """Return normalized (question, answer) pairs from a Hugging Face dataset."""
+    """Return normalized (question, answer) pairs from the configured dataset."""
 
     effective_dataset = config.dataset_name
     effective_split = config.dataset_split
@@ -22,9 +24,7 @@ def load_faq_pairs(
 
     try:
         dataset = load_dataset(
-            "json",
-            data_files="https://huggingface.co/palapiessa/e_commerce_customer_service_squad/resolve/main/ecommerce_faq_as_squad.json",
-            field="data",
+            effective_dataset,
             split=effective_split,
         )
     except Exception as exc:  # pragma: no cover - dataset errors are external
@@ -32,9 +32,11 @@ def load_faq_pairs(
 
     faqs: list[Tuple[str, str]] = []
 
-    for item in _iter_question_answer_rows(dataset):
-        question = _coerce_to_str(item.get(effective_question_field))
-        answer = _coerce_to_str(item.get(effective_answer_field))
+    for row in dataset:
+        if not isinstance(row, Mapping):
+            continue
+        question = _coerce_to_str(row.get(effective_question_field))
+        answer = _coerce_to_str(row.get(effective_answer_field))
         if question and answer:
             faqs.append((question, answer))
 
@@ -66,29 +68,6 @@ def persist_faq_pairs(
     except OSError as exc:
         raise RuntimeError(f"Unable to persist knowledge to {resolved_path}") from exc
 
-
-def _iter_question_answer_rows(
-    dataset: Iterable[Mapping[str, object]],
-) -> Iterator[Mapping[str, object]]:
-    for row in dataset:
-        if not isinstance(row, Mapping):
-            continue
-        paragraphs = row.get("paragraphs")
-        if _is_non_string_sequence(paragraphs):
-            for paragraph in paragraphs:  # type: ignore[arg-type]
-                if not isinstance(paragraph, Mapping):
-                    continue
-                qas = paragraph.get("qas")
-                if _is_non_string_sequence(qas):
-                    for qa in qas:  # type: ignore[arg-type]
-                        if isinstance(qa, Mapping):
-                            yield qa
-            continue
-        yield row
-
-
-def _is_non_string_sequence(value: object | None) -> bool:
-    return isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray))
 
 # Takes whatever value the Hugging Face dataset returned for a field (it might already be a string, a list of strings, or None)
 # and normalizes it into a single trimmed string or None. Strings get stripped and empty results become None; iterables get
