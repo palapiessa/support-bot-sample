@@ -31,8 +31,7 @@ Minimal Python support bot sample showing how to structure code, data, and tests
    ```
 4. Run the CLI app
    - use VSCode debug, launch.json in code repo
-   - or cmdline
+   - or cmdline from Support bot root folder
    ```bash
-   cd src
-   ../.venv/bin/python -m support_bot.cli
+   PYTHONPATH=src .venv/bin/python -m support_bot.cli
    ```
