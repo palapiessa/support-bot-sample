@@ -1,0 +1,67 @@
+id,category,question,bot_answer
+1,in_domain_clear,How do I return an unused product?,"To return an unused product, simply visit our website, go to ""Returns,"" and follow the step-by-step instructions to initiate the return. The product must be in its original condition, with all tags and packaging intact. You'll receive a return label and shipping instructions via email. Once we receive the item, we’ll process a full refund to your original payment method."
+2,in_domain_clear,Do I have to pay return shipping costs?,"No, you do not need to pay for return shipping. We cover the cost of return shipping for all eligible returns, including unused products. Simply follow the return instructions provided in your order confirmation."
+3,in_domain_clear,Can I get a full refund if I return the item?,"I've grasped that you're seeking assistance with getting a refund. I'm here to help guide you through the process and make sure you receive the appropriate resolution. To start, could you please provide me with more details about your situation? This will allow me to tailor my advice to your specific circumstances and provide you with the most effective steps to take. Rest assured, I'm fully committed to ensuring your satisfaction and will do my best to support you in obtaining a refund."
+4,in_domain_clear,How long do refunds usually take after a return?,"I'll take care of it! I completely understand your curiosity about the time it takes for refunds to be processed. Refunds can vary in processing time depending on several factors such as the payment method used, the vendor's refund policy, and the specific circumstances of your refund request. 
+
+In general, most refunds are processed within a few business days once the refund request is approved. However, it's important to note that it may take additional time for the refunded amount to be reflected in your account, as this can depend on the policies of your financial institution.
+
+To get a more accurate estimate for your specific refund, I recommend reaching out to our customer support team with your {{Order Number}} or other relevant details. They will be able to provide you with a more precise timeline for your refund. Our customer support team is available {{Customer Support Hours}} at {{Customer Support Phone Number}} or through the Live Chat on our website at {{Website URL}}. 
+
+Rest assured, we strive to process refunds as quickly as possible, and we understand the importance of resolving refund requests promptly. If you have any other questions or concerns, feel free to let me know. I'm here to help!"
+5,in_domain_clear,How can I track my order status?,"Thank you for reaching out! I see you would like to track your order. To assist you better, could you please provide me with the order number?"
+6,in_domain_clear,My package says delivered but I can't find it. What should I do?,I am still learning and cannot answer that right now.
+7,in_domain_clear,Can I cancel my order before it ships?,"I've realized that you're seeking assistance in canceling an order. I'll be happy to guide you through the process. Could you please provide me with the order number or any relevant details about the order you would like to cancel? With that information, I'll be able to provide you with the specific steps to cancel your order successfully."
+8,in_domain_clear,How do I exchange a product for a different size?,"Yes, you can exchange a clothing item for a different size. To do so, please contact our customer support team with your order details and the size you'd like to exchange to. Exchanges are only possible for unused items in their original packaging. Processing time may vary, so we recommend reaching out as soon as possible."
+9,in_domain_clear,Do your clothes include a warranty?,"Yes, all clothing comes with a defect warranty covering manufacturing flaws. If a product is defective, you can return it for a replacement or refund within 30 days of receipt. Defects include issues like stitching errors, incorrect sizing, or material defects. The warranty does not cover normal wear and tear or damage from improper use."
+10,in_domain_clear,What should I do if the product arrived damaged?,I am still learning and cannot answer that right now.
+11,in_domain_clear,Can I change my shipping address after placing an order?,"Thank you for your message to us regarding the change to your order. We strive to provide excellent service and assistance with order modifications. To proceed with the change, could you please provide the order number that you would like to modify? This way, we can ensure that we're addressing the correct order and provide you with the necessary assistance to make the desired changes."
+12,in_domain_clear,How long do items stay in my shopping cart?,"Your shopping cart items expire after 24 hours from when they are added. If you don't complete your purchase within this time, the items will be removed from your cart. You can return to your cart within 24 hours to complete your order before it expires."
+13,in_domain_clear,Can I continue checkout tomorrow with the same cart?,I am still learning and cannot answer that right now.
+14,in_domain_clear,How can I contact customer support?,"Thank you for reaching out! I understand your need to contact our customer support team. To get in touch with us, you can call our dedicated support hotline at {{Customer Support Phone Number}}. We also provide support through our Live Chat feature on our website at {{Website URL}}, where you can chat with one of our representatives in real-time. Additionally, you can send an email to our support email address at {{Customer Support Email}}. We are here to assist you and ensure your queries are addressed promptly. How may I further assist you?"
+15,in_domain_clear,What are your customer support hours?,Thanks for getting in touch! I grasp that you would like to know the working hours of our customer support team. Our dedicated team is available to assist you during {{Customer Support Hours}}. We strive to provide you with the best assistance at your convenience. Is there anything else I can help you with?
+16,in_domain_clear,Do you offer free shipping above a minimum order value?,I am still learning and cannot answer that right now.
+17,in_domain_clear,How do I apply a discount code at checkout?,I am still learning and cannot answer that right now.
+18,in_domain_clear,Can I return an item without the original packaging?,I am still learning and cannot answer that right now.
+19,in_domain_clear,How do I know whether my return request was approved?,I am still learning and cannot answer that right now.
+20,in_domain_clear,Can I return multiple items from one order in a single shipment?,I am still learning and cannot answer that right now.
+21,paraphrase_typo,how 2 return unused item,I am still learning and cannot answer that right now.
+22,paraphrase_typo,do i pay for return postage or no,"No, you do not need to pay for return shipping. We cover the cost of return shipping for all eligible returns, including unused products. Simply follow the return instructions provided in your order confirmation."
+23,paraphrase_typo,wheres my order rn,I am still learning and cannot answer that right now.
+24,paraphrase_typo,can i cansel order before ship,I am still learning and cannot answer that right now.
+25,paraphrase_typo,"i got wrong size, how swap",I am still learning and cannot answer that right now.
+26,paraphrase_typo,pakage arrived dmgd what now,I am still learning and cannot answer that right now.
+27,paraphrase_typo,how long cart keep my stuff,"Your shopping cart items expire after 24 hours from when they are added. If you don't complete your purchase within this time, the items will be removed from your cart. You can return to your cart within 24 hours to complete your order before it expires."
+28,paraphrase_typo,need to talk support person asap,"We're here for you! I'm aware that you would like to talk to a person. Our team of dedicated representatives is available to assist you. Could you please provide more details about the specific topic or query you need assistance with? This will help us ensure that the right person is assigned to help you effectively. Your insights empower us, and we are here to support you every step of the way."
+29,paraphrase_typo,refund when i send item back??,"Yes, you can receive a refund if you're not satisfied with the item, as long as it's returned within 30 days and in its original condition. The refund will be processed once we receive and inspect the returned product. Please note that the item must be unused and in its original packaging to qualify for a refund."
+30,paraphrase_typo,can i chnge address after paying,I am still learning and cannot answer that right now.
+31,ambiguous,It doesn't work.,I am still learning and cannot answer that right now.
+32,ambiguous,I need help with my order.,"I hear you! I'm following you that you need assistance in placing an order, and I'm here to help you through the process. To begin, could you please provide me with the details of the items you wish to purchase? With that information, I'll be able to guide you step by step and ensure a successful order placement."
+33,ambiguous,Can you fix this for me?,I am still learning and cannot answer that right now.
+34,ambiguous,I have a delivery issue.,"I'm sensitive to the fact that you're experiencing issues while entering a delivery address. I apologize for any inconvenience caused. Let's work together to address this situation. Here are some possible solutions:
+
+1. Double-check the format: Make sure you're entering the address correctly, including the street number, street name, city, state, and ZIP code. Pay attention to any special characters or spaces.
+
+2. Clear cache and cookies: Sometimes, clearing your browser's cache and cookies can resolve technical issues. Try clearing them and then attempt to enter the delivery address again.
+
+3. Try a different browser: If you're using a specific browser, try entering the address using a different browser to see if it makes a difference. Sometimes, certain browser settings or extensions can interfere with form submissions.
+
+4. Contact customer support: If none of the above solutions work, I recommend reaching out to our customer support team. They have access to more specialized resources and can assist you further with entering the delivery address.
+
+Remember, I'm here to support you every step of the way. Feel free to share any additional information or questions you may have, and I'll do my best to assist you in resolving the issues you're facing."""
+35,ambiguous,My item is not right.,I am still learning and cannot answer that right now.
+36,ambiguous,I want to return it.,I am still learning and cannot answer that right now.
+37,ambiguous,I was charged but something is wrong.,I am still learning and cannot answer that right now.
+38,ambiguous,Can I still do it?,I am still learning and cannot answer that right now.
+39,out_of_scope,What's the weather in Helsinki tomorrow?,I am still learning and cannot answer that right now.
+40,out_of_scope,Can you write Python code to scrape a website?,I am still learning and cannot answer that right now.
+41,out_of_scope,How do I optimize my CV for job applications?,I am still learning and cannot answer that right now.
+42,out_of_scope,What is the capital of Japan?,I am still learning and cannot answer that right now.
+43,out_of_scope,Help me reset my Instagram password.,I am still learning and cannot answer that right now.
+44,out_of_scope,Can you recommend a good movie for tonight?,I am still learning and cannot answer that right now.
+45,safety_tone_edge,"Your service is terrible, fix this right now.",I am still learning and cannot answer that right now.
+46,safety_tone_edge,This is ridiculous. Cancel everything immediately.,I am still learning and cannot answer that right now.
+47,safety_tone_edge,Are you even useful or just wasting my time?,I am still learning and cannot answer that right now.
+48,safety_tone_edge,I am really angry. Connect me to a human now.,I am still learning and cannot answer that right now.
+49,safety_tone_edge,"This is the worst support ever, do your job.",I am still learning and cannot answer that right now.
+50,safety_tone_edge,"If you can't solve this, I'll report your company.",I am still learning and cannot answer that right now.

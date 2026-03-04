@@ -3,8 +3,8 @@
 import json
 from pathlib import Path
 
-from bot import BotConfig, SupportBot
-from support_bot.answer_retriever import get_answer
+from src import BotConfig, SupportBot
+from src.answer_retriever import get_answer
 from test.loader import load_from_disk
 
 

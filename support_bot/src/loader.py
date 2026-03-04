@@ -81,7 +81,8 @@ def load_cached_embeddings(knowledge_path: Path) -> np.ndarray | None:
     except (OSError, ValueError):
         return None
 
-
+# provides the embedding model instance used for semantic matching.
+# That model encodes the user question into a vector.
 def get_embedding_model() -> SentenceTransformer:
     return _embedding_model()
 

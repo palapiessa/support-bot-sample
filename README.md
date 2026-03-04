@@ -4,9 +4,9 @@ Minimal Python support bot sample showing how to structure code, data, and tests
 
 ## Project layout
 
-- `src/` – application package (`support_bot`), keeps business logic and helpers.
+- `support_bot/src/` – application package (`src`), keeps bot logic and helpers.
+- `support_bot/test/` – `pytest` suite for unit and regression behavior checks.
 - `data/` – static knowledge bases or datasets consumed by the bot.
-- `test/` – `pytest` suite targeting the behavior described by the knowledge data.
 - `.venv/` – optional virtual environment (already present) to isolate dependencies.
 
 ## Getting started
@@ -27,11 +27,11 @@ Minimal Python support bot sample showing how to structure code, data, and tests
    ```
 3. Run the tests:
    ```bash
-   uv python -m pytest
+   PYTHONPATH=support_bot .venv/bin/python -m pytest support_bot/test
    ```
 4. Run the CLI app
    - use VSCode debug, launch.json in code repo
-   - or cmdline from Support bot root folder
+   - or cmdline from support-bot-sample root folder
    ```bash
-   PYTHONPATH=src .venv/bin/python -m support_bot.cli
+   PYTHONPATH=support_bot .venv/bin/python -m src.cli
    ```
