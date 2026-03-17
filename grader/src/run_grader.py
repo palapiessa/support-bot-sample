@@ -8,8 +8,10 @@ from typing import Any
 from dotenv import find_dotenv, load_dotenv
 from huggingface_hub import InferenceClient
 from huggingface_hub.errors import HfHubHTTPError
-
 from grader_score import GraderScore
+
+import logging
+from azure.monitor.opentelemetry import configure_azure_monitor
 
 SCRIPT_PATH = Path(__file__).resolve()
 PROJECT_ROOT = SCRIPT_PATH.parents[2]
@@ -20,6 +22,9 @@ load_dotenv(find_dotenv())
 load_dotenv(SUPPORT_BOT_ENV_PATH)
 
 GRADER_MODEL = "Qwen/Qwen3-4B-Instruct-2507"
+configure_azure_monitor(logger_name="grader")
+logger = logging.getLogger("grader")
+logger.setLevel(logging.INFO)
 
 
 def _load_answers_csv(csv_path: Path | str) -> list[dict[str, str]]:
@@ -114,13 +119,16 @@ def _parse_score_from_text(raw_text: str) -> GraderScore:
 		raise ValueError("grader response did not contain a JSON object")
 
 	payload = json.loads(raw_text[start : end + 1])
-	return GraderScore(
+	
+	score = GraderScore(
 		semantic_correctness=int(payload["semantic_correctness"]),
 		helpfulness=int(payload["helpfulness"]),
 		tone_safety=int(payload["tone_safety"]),
 		passed=bool(payload["passed"]),
 		reason=str(payload["reason"]),
 	)
+	
+	return score
 
 
 def _grade_answer(client: InferenceClient, model: str, question: str, bot_answer: str) -> GraderScore:
@@ -153,7 +161,21 @@ def _grade_answer(client: InferenceClient, model: str, question: str, bot_answer
 	)
 
 	raw_text = _extract_message_text(response)
-	return _parse_score_from_text(raw_text)
+
+	score = _parse_score_from_text(raw_text)
+
+	logger.info(
+		"Row graded",
+		extra={
+			"question": question[:100],
+			"passed": str(score.passed),
+			"semantic_correctness": score.semantic_correctness,
+			"helpfulness": score.helpfulness,
+			"tone_safety": score.tone_safety,
+		},
+	)
+
+	return score
 
 
 def main() -> int:
@@ -168,6 +190,11 @@ def main() -> int:
 	token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
 	if not token:
 		parser.error("Missing HF token. Set HF_TOKEN or HUGGINGFACEHUB_API_TOKEN.")
+
+	logger.info("Grader started", extra={"custom_dimensions": {
+    "answers_csv": str(args.answers_csv),
+    "model": args.model,
+    "row_count": len(rows),}})
 
 	client = InferenceClient(api_key=token)
 	args.output_jsonl.parent.mkdir(parents=True, exist_ok=True)
@@ -193,6 +220,10 @@ def main() -> int:
 					passed=False,
 					reason=f"Grader error: {error_text[:220]}",
 				)
+				logger.error("Grader error", extra={"custom_dimensions": {
+    			"question": question[:100],
+    			"error": error_text[:220],
+				}})
 
 			record = {
 				"question": question,
@@ -207,6 +238,12 @@ def main() -> int:
 				break
 
 	print(f"\nDone. Wrote {processed} JSONL rows to {args.output_jsonl}")
+	
+	logger.info("Grader finished", extra={"custom_dimensions": {
+    "total_graded": processed,
+    "output_jsonl": str(args.output_jsonl),
+	}})
+	
 	return 0
 
 
